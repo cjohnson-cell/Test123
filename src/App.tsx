@@ -1087,28 +1087,255 @@ export default function App() {
     BRONZE: 900,
     GOLD: 1400,
     TITANIUM: 2000,
-    APEX: 2700,
+    APEX: 3000,
   };
   const multiplier = streak >= 5 ? 3 : streak >= 3 ? 2 : 1;
 
-  const getDifficultyTier = (currentRank: string) => {
-    switch (currentRank) {
+  // NEW: Shared rank calculation for Player and Leaderboard
+  const getRankFromXp = (v: number) => {
+    if (v < RANK_THRESHOLDS.COPPER) return "IRON";
+    if (v < RANK_THRESHOLDS.BRONZE) return "COPPER";
+    if (v < RANK_THRESHOLDS.GOLD) return "BRONZE";
+    if (v < RANK_THRESHOLDS.TITANIUM) return "GOLD";
+    if (v < RANK_THRESHOLDS.APEX) return "TITANIUM";
+    return "APEX";
+  };
+
+  const getRankColor = (r: string) => {
+    switch (r) {
       case "IRON":
-        return 1; // Beginner
+        return "#94a3b8";
       case "COPPER":
-        return 2; // Easy
+        return "#d97706";
       case "BRONZE":
-        return 3; // Medium
+        return "#b45309";
       case "GOLD":
-        return 4; // Advanced
+        return "#fbbf24";
       case "TITANIUM":
-        return 5; // Pro
+        return "#e2e8f0";
       case "APEX":
-        return 6; // Impossible
+        return "#0df0d4";
       default:
-        return 1;
+        return "#94a3b8";
     }
   };
+
+  // NEW: Global Badge Generator for all UI elements
+  const getRankBadge = (r: string, size: number = 28) => {
+    switch (r) {
+      case "IRON":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 3px rgba(148, 163, 184, 0.5))",
+              flexShrink: 0,
+            }}
+          >
+            <polygon
+              points="50,5 95,25 95,75 50,95 5,75 5,25"
+              fill="#334155"
+              stroke="#94a3b8"
+              strokeWidth="4"
+              strokeLinejoin="round"
+            />
+            <polygon
+              points="50,20 80,35 80,65 50,80 20,65 20,35"
+              fill="#475569"
+            />
+          </svg>
+        );
+      case "COPPER":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 4px rgba(217, 119, 6, 0.6))",
+              flexShrink: 0,
+            }}
+          >
+            <polygon
+              points="50,5 95,25 95,75 50,95 5,75 5,25"
+              fill="#78350f"
+              stroke="#d97706"
+              strokeWidth="6"
+              strokeLinejoin="round"
+            />
+            <polygon
+              points="50,15 85,32 85,68 50,85 15,68 15,32"
+              fill="none"
+              stroke="#f59e0b"
+              strokeWidth="2"
+            />
+            <polygon
+              points="50,30 70,42 70,58 50,70 30,58 30,42"
+              fill="#d97706"
+            />
+          </svg>
+        );
+      case "BRONZE":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 5px rgba(180, 83, 9, 0.6))",
+              flexShrink: 0,
+            }}
+          >
+            <path
+              d="M50 5 L95 20 L90 70 L50 95 L10 70 L5 20 Z"
+              fill="#451a03"
+              stroke="#b45309"
+              strokeWidth="6"
+              strokeLinejoin="round"
+            />
+            <path
+              d="M50 15 L85 28 L80 65 L50 85 L20 65 L15 28 Z"
+              fill="#78350f"
+              stroke="#f59e0b"
+              strokeWidth="2"
+            />
+            <polygon points="50,25 70,45 50,75 30,45" fill="#b45309" />
+            <polygon points="50,35 60,45 50,60 40,45" fill="#fef3c7" />
+          </svg>
+        );
+      case "GOLD":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 6px rgba(251, 191, 36, 0.8))",
+              flexShrink: 0,
+            }}
+          >
+            <polygon
+              points="50,5 100,35 85,90 50,100 15,90 0,35"
+              fill="#78350f"
+              stroke="#fbbf24"
+              strokeWidth="8"
+              strokeLinejoin="round"
+            />
+            <polygon
+              points="50,15 90,40 75,82 50,90 25,82 10,40"
+              fill="#b45309"
+            />
+            <polygon
+              points="50,25 80,45 65,75 50,80 35,75 20,45"
+              fill="#fbbf24"
+            />
+            <polygon
+              points="50,10 60,35 85,45 60,55 50,80 40,55 15,45 40,35"
+              fill="#fef3c7"
+            />
+          </svg>
+        );
+      case "TITANIUM":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 8px rgba(226, 232, 240, 0.8))",
+              flexShrink: 0,
+            }}
+          >
+            <polygon
+              points="50,0 95,20 100,65 50,100 0,65 5,20"
+              fill="#0f172a"
+              stroke="#e2e8f0"
+              strokeWidth="6"
+              strokeLinejoin="round"
+            />
+            <polygon
+              points="50,12 85,28 90,60 50,90 10,60 15,28"
+              fill="#1e293b"
+              stroke="#94a3b8"
+              strokeWidth="3"
+            />
+            <polygon
+              points="50,20 75,35 60,75 50,90 40,75 25,35"
+              fill="#e2e8f0"
+            />
+            <polygon
+              points="50,25 65,38 55,65 50,75 45,65 35,38"
+              fill="#38bdf8"
+            />
+            <polygon points="50,30 55,42 50,55 45,42" fill="#ffffff" />
+          </svg>
+        );
+      case "APEX":
+        return (
+          <div
+            style={{
+              position: "relative",
+              width: size,
+              height: size,
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexShrink: 0,
+            }}
+          >
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ repeat: Infinity, duration: 8, ease: "linear" }}
+              style={{ position: "absolute", width: "100%", height: "100%" }}
+            >
+              <svg
+                viewBox="0 0 100 100"
+                style={{ filter: "drop-shadow(0 0 2px #0df0d4)" }}
+              >
+                <polygon points="50,0 55,10 50,20 45,10" fill="#0df0d4" />
+                <polygon points="50,100 55,90 50,80 45,90" fill="#0df0d4" />
+                <polygon points="0,50 10,45 20,50 10,55" fill="#0df0d4" />
+                <polygon points="100,50 90,45 80,50 90,55" fill="#0df0d4" />
+              </svg>
+            </motion.div>
+            <svg
+              viewBox="0 0 100 100"
+              style={{
+                width: "100%",
+                height: "100%",
+                filter: "drop-shadow(0 0 6px rgba(13, 240, 212, 1))",
+              }}
+            >
+              <path
+                d="M50 0 L100 25 L90 80 L50 100 L10 80 L0 25 Z"
+                fill="#020617"
+                stroke="#0df0d4"
+                strokeWidth="6"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M50 15 L88 32 L78 75 L50 90 L22 75 L12 32 Z"
+                fill="#0891b2"
+                stroke="#22d3ee"
+                strokeWidth="3"
+              />
+              <polygon
+                points="50,20 80,40 60,80 50,95 40,80 20,40"
+                fill="#0df0d4"
+              />
+              <polygon points="50,30 65,45 50,75 35,45" fill="#ffffff" />
+              <polygon points="50,35 55,48 50,60 45,48" fill="#ec4899" />
+            </svg>
+          </div>
+        );
+      default:
+        return <div style={{ width: size, height: size }} />;
+    }
+  };
+
+  const getDifficultyTier = (currentRank: string) => {};
 
   const currentTier = getDifficultyTier(rank);
   const [activeEmail, setActiveEmail] = useState(EMAIL_DATABASE[0]);
@@ -1128,20 +1355,20 @@ export default function App() {
       isMe: true,
     },
   ]
-    .sort((a, b) => b.xp - a.xp)
-    .map((user, index) => ({ ...user, rank: index + 1 }))
+    .sort((a, b: any) => b.xp - a.xp)
+    .map((user, index) => {
+      const tierRank = getRankFromXp(user.xp);
+      return {
+        ...user,
+        boardPosition: index + 1,
+        tierRank: tierRank,
+        rankColor: getRankColor(tierRank),
+      };
+    })
     .slice(0, 6);
 
   useEffect(() => {
-    const getRank = (v: number) => {
-      if (v < RANK_THRESHOLDS.COPPER) return "IRON";
-      if (v < RANK_THRESHOLDS.BRONZE) return "COPPER";
-      if (v < RANK_THRESHOLDS.GOLD) return "BRONZE";
-      if (v < RANK_THRESHOLDS.TITANIUM) return "GOLD";
-      if (v < RANK_THRESHOLDS.APEX) return "TITANIUM";
-      return "APEX";
-    };
-    const newRank = getRank(xp);
+    const newRank = getRankFromXp(xp);
     if (newRank !== rank && xp > 0) {
       setRank(newRank);
       setShowRankUp(true);
@@ -1218,35 +1445,37 @@ export default function App() {
 
   const handleNext = () => {
     setFeedback(null);
-    setFoundIoCs([]); // Reset flags
+    setFoundIoCs([]);
     setHoveredIoC(null);
     setInspectorActive(false);
 
-    // 1. Get all emails allowed for the player's current rank
     const unlockedEmails = EMAIL_DATABASE.filter(
-      (email) => email.tier <= currentTier
+      (email) => email.tier === currentTier
     );
 
-    // 2. Filter out ALL emails we have already seen in this cycle
     let availableEmails = unlockedEmails.filter(
       (email) => !seenEmailIds.includes(email.id)
     );
 
-    // 3. If we've seen them all, reset the history pool (but exclude the current one so it doesn't instantly repeat)
     if (availableEmails.length === 0) {
       availableEmails = unlockedEmails.filter(
         (email) => email.id !== activeEmail.id
       );
-      setSeenEmailIds([activeEmail.id]); // Reset the memory pool
+      setSeenEmailIds([activeEmail.id]);
     }
 
-    // 4. Pick a random email from the fresh pool
-    const randomIndex = Math.floor(Math.random() * availableEmails.length);
-    const nextEmail = availableEmails[randomIndex];
+    // --- SAFETY CHECK START ---
+    // If the tier is empty, use the whole database as a fallback
+    const finalPool =
+      availableEmails.length > 0 ? availableEmails : EMAIL_DATABASE;
+    const randomIndex = Math.floor(Math.random() * finalPool.length);
+    const nextEmail = finalPool[randomIndex];
+    // --- SAFETY CHECK END ---
 
-    // 5. Update the UI and add the new email to the memory pool
-    setActiveEmail(nextEmail);
-    setSeenEmailIds((prev) => [...prev, nextEmail.id]);
+    if (nextEmail) {
+      setActiveEmail(nextEmail);
+      setSeenEmailIds((prev) => [...prev, nextEmail.id]);
+    }
   };
 
   // Event Delegation Handlers
@@ -2233,17 +2462,67 @@ export default function App() {
                     key={user.id}
                     className={`leaderboard-item ${user.isMe ? "is-me" : ""}`}
                   >
-                    <div className={`leaderboard-rank rank-${user.rank}`}>
-                      #{user.rank}
+                    <div
+                      className={`leaderboard-rank rank-${user.boardPosition}`}
+                    >
+                      #{user.boardPosition}
                     </div>
-                    <div className="leaderboard-name">
-                      {user.name} {user.isMe && "(You)"}
+
+                    <div
+                      className="leaderboard-name"
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        gap: "2px",
+                      }}
+                    >
+                      {/* Flex container pairs the newly generated badge with the name */}
+                      <div
+                        style={{
+                          display: "flex",
+                          alignItems: "center",
+                          gap: "10px",
+                        }}
+                      >
+                        {getRankBadge(user.tierRank, 28)}
+                        <span style={{ fontSize: "14px", fontWeight: 700 }}>
+                          {user.name} {user.isMe && "(You)"}
+                        </span>
+                      </div>
+                      <span
+                        style={{
+                          color: user.rankColor,
+                          fontSize: "10px",
+                          fontWeight: 900,
+                          textTransform: "uppercase",
+                          letterSpacing: "1px",
+                          textShadow:
+                            user.tierRank === "APEX"
+                              ? "0 0 8px rgba(13, 240, 212, 0.8)"
+                              : "none",
+                        }}
+                      >
+                        {user.tierRank}
+                      </span>
                     </div>
+
                     <div className="leaderboard-stats">
-                      <div className="leaderboard-xp">
+                      <div
+                        className="leaderboard-xp"
+                        style={{ color: "#eab308", fontWeight: 900 }}
+                      >
                         {user.xp.toLocaleString()} XP
                       </div>
-                      <div className="leaderboard-acc">{user.acc} Accuracy</div>
+                      <div
+                        className="leaderboard-acc"
+                        style={{
+                          fontSize: "11px",
+                          color: "#10b981",
+                          fontWeight: 800,
+                        }}
+                      >
+                        {user.acc} Acc
+                      </div>
                     </div>
                   </motion.div>
                 ))}
