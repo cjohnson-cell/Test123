@@ -1185,6 +1185,7 @@ const EMAIL_DATABASE = [
 // FORENSIC MAGNIFIER SKINS (LOOT TABLE)
 // ==========================================
 const MAGNIFIER_SKINS: Record<string, any> = {
+  // --- UPGRADED ORIGINAL SKINS ---
   STANDARD: {
     id: "STANDARD",
     name: "Standard Issue",
@@ -1192,7 +1193,10 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#00a9e0",
     filter: "blur(12px) brightness(1.1)",
     shadow: "rgba(0, 169, 224, 0.2)",
-    handleColor: "#001a47",
+    handleBackground: "linear-gradient(90deg, #001a47, #003380, #001a47)",
+    handleWidth: "26px",
+    borderWidth: "6px",
+    handleRadius: "8px",
     handleGlow: "none",
   },
   AMBER: {
@@ -1202,7 +1206,11 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#ff7b00",
     filter: "blur(12px) brightness(1.1)",
     shadow: "rgba(255, 123, 0, 0.2)",
-    handleColor: "#431407",
+    handleBackground:
+      "repeating-linear-gradient(45deg, #431407 0px, #431407 10px, #7c2d12 10px, #7c2d12 20px)",
+    handleWidth: "30px",
+    borderWidth: "8px",
+    handleRadius: "4px",
     handleGlow: "none",
   },
   MIDNIGHT: {
@@ -1212,7 +1220,11 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#001a47",
     filter: "blur(8px) brightness(0.6) contrast(1.5)",
     shadow: "rgba(0, 26, 71, 0.5)",
-    handleColor: "#020617",
+    handleBackground:
+      "linear-gradient(135deg, #020617 25%, #0f172a 25%, #0f172a 50%, #020617 50%, #020617 75%, #0f172a 75%, #0f172a 100%)",
+    handleWidth: "22px",
+    handleRadius: "0px",
+    borderWidth: "4px",
     handleGlow: "none",
   },
   TERMINAL: {
@@ -1222,7 +1234,11 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#10b981",
     filter: "blur(10px) sepia(1) hue-rotate(70deg) brightness(0.8)",
     shadow: "rgba(16, 185, 129, 0.4)",
-    handleColor: "#064e3b",
+    handleBackground:
+      "repeating-linear-gradient(0deg, #064e3b, #064e3b 2px, #022c22 2px, #022c22 4px)",
+    handleWidth: "28px",
+    borderWidth: "10px",
+    handleRadius: "2px",
     handleGlow: "0 0 15px rgba(16, 185, 129, 0.5)",
   },
   THERMAL: {
@@ -1232,7 +1248,10 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#ef4444",
     filter: "blur(12px) invert(1) hue-rotate(180deg)",
     shadow: "rgba(239, 68, 68, 0.4)",
-    handleColor: "#7f1d1d",
+    handleBackground: "linear-gradient(to bottom, #7f1d1d, #dc2626, #f59e0b)",
+    handleWidth: "26px",
+    borderWidth: "6px",
+    handleRadius: "13px",
     handleGlow: "0 0 15px rgba(239, 68, 68, 0.5)",
   },
   GOLD: {
@@ -1242,9 +1261,13 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#fbbf24",
     filter: "blur(8px) brightness(1.3) contrast(1.2)",
     shadow: "rgba(251, 191, 36, 0.6)",
-    handleColor: "#78350f",
+    handleBackground:
+      "linear-gradient(90deg, #78350f 0%, #b45309 25%, #fcd34d 50%, #b45309 75%, #78350f 100%)",
+    handleWidth: "32px",
+    borderWidth: "10px",
+    handleRadius: "16px",
     handleGlow: "0 0 25px rgba(251, 191, 36, 0.8)",
-  }, // Deep wooden handle
+  },
   NEON: {
     id: "NEON",
     name: "Neon Pulse",
@@ -1252,9 +1275,12 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#ff00ff",
     filter: "blur(12px) saturate(2.5) hue-rotate(90deg)",
     shadow: "rgba(255, 0, 255, 0.6)",
-    handleColor: "#0df0d4",
+    handleBackground: "linear-gradient(180deg, #0df0d4, #ff00ff)",
+    handleWidth: "20px",
+    borderWidth: "8px",
+    handleRadius: "4px",
     handleGlow: "0 0 25px rgba(13, 240, 212, 0.8)",
-  }, // Cyan handle contrasting Magenta rim
+  },
   ANOMALY: {
     id: "ANOMALY",
     name: "The Anomaly",
@@ -1262,8 +1288,122 @@ const MAGNIFIER_SKINS: Record<string, any> = {
     color: "#0df0d4",
     filter: "blur(16px) contrast(2) saturate(3) hue-rotate(-45deg)",
     shadow: "rgba(13, 240, 212, 0.8)",
-    handleColor: "#ffffff",
+    handleBackground: "radial-gradient(circle, #ffffff, #0df0d4, #0f172a)",
+    handleWidth: "16px",
+    borderWidth: "4px",
+    lensSize: 280,
     handleGlow: "0 0 30px #ffffff",
+    isAnimated: true,
+  },
+
+  // --- NEW COMMON SKINS ---
+  WOOD: {
+    id: "WOOD",
+    name: "Classic Mahogany",
+    rarity: "Common",
+    color: "#b45309",
+    filter: "blur(10px) sepia(0.3)",
+    shadow: "rgba(180, 83, 9, 0.2)",
+    handleBackground: "linear-gradient(90deg, #451a03, #78350f, #451a03)",
+    handleGlow: "none",
+    handleWidth: "30px",
+    handleRadius: "4px",
+  },
+  CARBON: {
+    id: "CARBON",
+    name: "Carbon Fiber",
+    rarity: "Common",
+    color: "#94a3b8",
+    filter: "blur(14px) grayscale(0.5)",
+    shadow: "rgba(148, 163, 184, 0.3)",
+    handleBackground:
+      "repeating-linear-gradient(45deg, #0f172a, #0f172a 4px, #1e293b 4px, #1e293b 8px)",
+    handleGlow: "none",
+    handleWidth: "28px",
+  },
+  IVORY_RIB: {
+    id: "IVORY_RIB",
+    name: "The Investigator",
+    rarity: "Common",
+    color: "#d97706",
+    filter: "blur(12px) brightness(1.05)",
+    shadow: "rgba(217, 119, 6, 0.2)",
+    handleBackground:
+      "repeating-linear-gradient(90deg, #fdfbf7, #fdfbf7 6px, #e2e8f0 6px, #e2e8f0 10px)",
+    handleGlow: "none",
+    handleWidth: "36px",
+    handleRadius: "8px",
+  },
+
+  // --- NEW RARE SKINS ---
+  BOTANIST: {
+    id: "BOTANIST",
+    name: "Forest Relic",
+    rarity: "Rare",
+    color: "#65a30d",
+    filter: "blur(10px) sepia(0.5) hue-rotate(40deg)",
+    shadow: "rgba(101, 163, 13, 0.3)",
+    handleBackground: "linear-gradient(to right, #27272a, #3f3f46, #27272a)",
+    handleGlow: "none",
+    handleWidth: "16px",
+    handleRadius: "10px",
+    borderWidth: "8px",
+  },
+  ART_DECO: {
+    id: "ART_DECO",
+    name: "Art Deco",
+    rarity: "Rare",
+    color: "#cbd5e1",
+    filter: "blur(12px) contrast(1.2)",
+    shadow: "rgba(203, 213, 225, 0.4)",
+    handleBackground:
+      "repeating-linear-gradient(45deg, #020617 0, #020617 10px, #f8fafc 10px, #f8fafc 20px)",
+    handleGlow: "0 0 15px rgba(255,255,255,0.2)",
+    handleWidth: "34px",
+    handleRadius: "0px",
+  },
+
+  // --- NEW EPIC SKINS ---
+  ROYAL_ETCH: {
+    id: "ROYAL_ETCH",
+    name: "Royal Etching",
+    rarity: "Epic",
+    color: "#f59e0b",
+    filter: "blur(10px) brightness(1.2) contrast(1.1)",
+    shadow: "rgba(245, 158, 11, 0.5)",
+    handleBackground:
+      "repeating-linear-gradient(135deg, #b45309, #f59e0b 5px, #d97706 10px)",
+    handleGlow: "0 0 20px rgba(245, 158, 11, 0.4)",
+    handleWidth: "24px",
+    handleRadius: "12px",
+  },
+  BEADED: {
+    id: "BEADED",
+    name: "Imperial Beads",
+    rarity: "Epic",
+    color: "#fbbf24",
+    filter: "blur(14px) brightness(1.1)",
+    shadow: "rgba(251, 191, 36, 0.5)",
+    handleBackground:
+      "radial-gradient(circle at 50% 50%, #818cf8 10%, #312e81 40%, #000 90%)",
+    handleGlow: "0 0 25px rgba(129, 140, 248, 0.6)",
+    handleWidth: "38px",
+    handleRadius: "20px",
+  },
+
+  // --- NEW LEGENDARY SKIN ---
+  QUANTUM: {
+    id: "QUANTUM",
+    name: "Quantum Lens",
+    rarity: "Legendary",
+    color: "#a855f7",
+    filter: "blur(18px) saturate(4) hue-rotate(-90deg) contrast(1.5)",
+    shadow: "rgba(168, 85, 247, 0.9)",
+    handleBackground: "linear-gradient(180deg, #c026d3, #4c1d95)",
+    handleGlow: "0 0 40px #c026d3",
+    handleWidth: "18px",
+    lensSize: 180,
+    borderWidth: "12px",
     isAnimated: true,
   },
 };
@@ -1318,6 +1458,9 @@ export default function App() {
   const [rouletteItems, setRouletteItems] = useState<any[]>([]);
   const [wonSkin, setWonSkin] = useState<any>(null);
   const [lastXpThreshold, setLastXpThreshold] = useState(0);
+  const [spinKey, setSpinKey] = useState(0); // Forces roulette animation to reset
+  const [isDuplicate, setIsDuplicate] = useState(false);
+  const [duplicateXpReward, setDuplicateXpReward] = useState(0);
 
   // NEW: Force the app to ALWAYS find a Tier 1 email on startup
   const initialEmail =
@@ -1327,20 +1470,20 @@ export default function App() {
   const RANK_THRESHOLDS = {
     IRON: 0,
     COPPER: 400,
-    BRONZE: 900,
-    GOLD: 1400,
-    TITANIUM: 2000,
-    APEX: 3000,
+    GOLD: 900,
+    TITANIUM: 1500,
+    RUBY: 2200,
+    APEX: 4000,
   };
   const multiplier = streak >= 5 ? 3 : streak >= 3 ? 2 : 1;
 
   // NEW: Shared rank calculation for Player and Leaderboard
   const getRankFromXp = (v: number) => {
     if (v < RANK_THRESHOLDS.COPPER) return "IRON";
-    if (v < RANK_THRESHOLDS.BRONZE) return "COPPER";
-    if (v < RANK_THRESHOLDS.GOLD) return "BRONZE";
+    if (v < RANK_THRESHOLDS.GOLD) return "COPPER";
     if (v < RANK_THRESHOLDS.TITANIUM) return "GOLD";
-    if (v < RANK_THRESHOLDS.APEX) return "TITANIUM";
+    if (v < RANK_THRESHOLDS.RUBY) return "TITANIUM";
+    if (v < RANK_THRESHOLDS.APEX) return "RUBY";
     return "APEX";
   };
 
@@ -1350,12 +1493,12 @@ export default function App() {
         return "#94a3b8";
       case "COPPER":
         return "#d97706";
-      case "BRONZE":
-        return "#b45309";
       case "GOLD":
         return "#fbbf24";
       case "TITANIUM":
         return "#e2e8f0";
+      case "RUBY":
+        return "#e11d48";
       case "APEX":
         return "#0df0d4";
       default:
@@ -1420,34 +1563,7 @@ export default function App() {
             />
           </svg>
         );
-      case "BRONZE":
-        return (
-          <svg
-            viewBox="0 0 100 100"
-            style={{
-              width: size,
-              height: size,
-              filter: "drop-shadow(0 0 5px rgba(180, 83, 9, 0.6))",
-              flexShrink: 0,
-            }}
-          >
-            <path
-              d="M50 5 L95 20 L90 70 L50 95 L10 70 L5 20 Z"
-              fill="#451a03"
-              stroke="#b45309"
-              strokeWidth="6"
-              strokeLinejoin="round"
-            />
-            <path
-              d="M50 15 L85 28 L80 65 L50 85 L20 65 L15 28 Z"
-              fill="#78350f"
-              stroke="#f59e0b"
-              strokeWidth="2"
-            />
-            <polygon points="50,25 70,45 50,75 30,45" fill="#b45309" />
-            <polygon points="50,35 60,45 50,60 40,45" fill="#fef3c7" />
-          </svg>
-        );
+
       case "GOLD":
         return (
           <svg
@@ -1515,6 +1631,33 @@ export default function App() {
             <polygon points="50,30 55,42 50,55 45,42" fill="#ffffff" />
           </svg>
         );
+
+      case "RUBY":
+        return (
+          <svg
+            viewBox="0 0 100 100"
+            style={{
+              width: size,
+              height: size,
+              filter: "drop-shadow(0 0 8px rgba(225, 29, 72, 0.8))",
+              flexShrink: 0,
+            }}
+          >
+            <polygon
+              points="50,5 95,25 95,75 50,95 5,75 5,25"
+              fill="#4c0519"
+              stroke="#e11d48"
+              strokeWidth="6"
+              strokeLinejoin="round"
+            />
+            <polygon points="50,15 85,32 50,50 15,32" fill="#fb7185" />
+            <polygon points="85,32 85,68 50,85 50,50" fill="#9f1239" />
+            <polygon points="15,32 50,50 50,85 15,68" fill="#e11d48" />
+            <polygon points="50,25 70,40 50,70 30,40" fill="#f43f5e" />
+            <polygon points="50,30 55,40 50,55 45,40" fill="#fff1f2" />
+          </svg>
+        );
+
       case "APEX":
         return (
           <div
@@ -1578,7 +1721,24 @@ export default function App() {
     }
   };
 
-  const getDifficultyTier = (currentRank: string) => {};
+  const getDifficultyTier = (currentRank: string) => {
+    switch (currentRank) {
+      case "IRON":
+        return 1;
+      case "COPPER":
+        return 2;
+      case "GOLD":
+        return 3;
+      case "TITANIUM":
+        return 4;
+      case "RUBY":
+        return 5;
+      case "APEX":
+        return 6;
+      default:
+        return 1;
+    }
+  };
 
   const currentTier = getDifficultyTier(rank);
   const [activeEmail, setActiveEmail] = useState(initialEmail);
@@ -1626,7 +1786,7 @@ export default function App() {
     }
 
     // 2. 500 XP MILESTONE CHECK
-    const currentThreshold = Math.floor(xp / 500);
+    const currentThreshold = Math.floor(xp / 50);
     if (currentThreshold > lastXpThreshold) {
       const cratesEarned = currentThreshold - lastXpThreshold;
       setCrates((prev) => prev + cratesEarned);
@@ -1640,12 +1800,29 @@ export default function App() {
     }
   }, [xp, rank, lastXpThreshold]);
 
+  // Helper to determine XP payout for duplicates
+  const getDuplicateXp = (rarity: string) => {
+    switch (rarity) {
+      case "Common":
+        return 50;
+      case "Rare":
+        return 150;
+      case "Epic":
+        return 500;
+      case "Legendary":
+        return 1500;
+      default:
+        return 50;
+    }
+  };
+
   // CRATE UNBOXING LOGIC
   const openCrate = () => {
     if (crates <= 0) return;
     setCrates((prev) => prev - 1);
     setWonSkin(null);
     setShowUnboxing(true);
+    setSpinKey((prev) => prev + 1); // Triggers the animation reset
 
     const getRandomSkin = () => {
       const roll = Math.random() * 100;
@@ -1654,22 +1831,60 @@ export default function App() {
       if (roll > 90 && roll <= 99) rarity = "Epic";
       if (roll > 99) rarity = "Legendary";
 
+      // Exclude "STANDARD" from being rolled in crates
       const availableSkins = Object.values(MAGNIFIER_SKINS).filter(
-        (s) => s.rarity === rarity
+        (s) => s.rarity === rarity && s.id !== "STANDARD"
       );
+
+      // Fallback in case of weird math bounds
+      if (availableSkins.length === 0) return MAGNIFIER_SKINS["AMBER"];
+
       return availableSkins[Math.floor(Math.random() * availableSkins.length)];
     };
 
-    // Build the 50-item roulette wheel
-    const spinArray = Array.from({ length: 50 }, () => getRandomSkin());
-    const winningItem = spinArray[45]; // It stops on the 45th item
+    // 1. Roll the actual prize first
+    const winningItem = getRandomSkin();
+
+    // 2. Check if the user already owns it right now
+    const alreadyOwned = inventory.includes(winningItem.id);
+    const bonusXp = alreadyOwned ? getDuplicateXp(winningItem.rarity) : 0;
+
+    // 3. Build the visually diverse roulette track (no adjacent duplicates)
+    const spinArray = [];
+    const allSkins = Object.values(MAGNIFIER_SKINS).filter(
+      (s) => s.id !== "STANDARD"
+    );
+
+    for (let i = 0; i < 50; i++) {
+      if (i === 45) {
+        // Slot 45 is the guaranteed stop point
+        spinArray.push(winningItem);
+      } else {
+        let filler;
+        let attempts = 0;
+        do {
+          filler = allSkins[Math.floor(Math.random() * allSkins.length)];
+          attempts++;
+        } while (
+          attempts < 10 &&
+          ((i > 0 && filler.id === spinArray[i - 1].id) ||
+            (i === 44 && filler.id === winningItem.id))
+        );
+        spinArray.push(filler);
+      }
+    }
 
     setRouletteItems(spinArray);
 
-    // Wait for the animation, then award the item
+    // Wait for the animation, then award the item/XP and update UI
     setTimeout(() => {
       setWonSkin(winningItem);
-      if (!inventory.includes(winningItem.id)) {
+      setIsDuplicate(alreadyOwned);
+
+      if (alreadyOwned) {
+        setDuplicateXpReward(bonusXp);
+        setXp((prev) => prev + bonusXp); // This triggers your existing Rank Up / Milestone logic!
+      } else {
         setInventory((prev) => [...prev, winningItem.id]);
       }
     }, 5500);
@@ -1679,18 +1894,19 @@ export default function App() {
     if (xp >= RANK_THRESHOLDS.APEX) return 100;
     let currentBase = 0;
     let nextTarget = RANK_THRESHOLDS.COPPER;
-    if (xp >= RANK_THRESHOLDS.TITANIUM) {
-      currentBase = RANK_THRESHOLDS.TITANIUM;
+
+    if (xp >= RANK_THRESHOLDS.RUBY) {
+      currentBase = RANK_THRESHOLDS.RUBY;
       nextTarget = RANK_THRESHOLDS.APEX;
+    } else if (xp >= RANK_THRESHOLDS.TITANIUM) {
+      currentBase = RANK_THRESHOLDS.TITANIUM;
+      nextTarget = RANK_THRESHOLDS.RUBY;
     } else if (xp >= RANK_THRESHOLDS.GOLD) {
       currentBase = RANK_THRESHOLDS.GOLD;
       nextTarget = RANK_THRESHOLDS.TITANIUM;
-    } else if (xp >= RANK_THRESHOLDS.BRONZE) {
-      currentBase = RANK_THRESHOLDS.BRONZE;
-      nextTarget = RANK_THRESHOLDS.GOLD;
     } else if (xp >= RANK_THRESHOLDS.COPPER) {
       currentBase = RANK_THRESHOLDS.COPPER;
-      nextTarget = RANK_THRESHOLDS.BRONZE;
+      nextTarget = RANK_THRESHOLDS.GOLD;
     }
     return ((xp - currentBase) / (nextTarget - currentBase)) * 100;
   };
@@ -1719,7 +1935,7 @@ export default function App() {
 
     if (isCorrect) {
       setCorrectDecisions((prev) => prev + 1);
-      const xpGained = 200 * multiplier;
+      const xpGained = 400 * multiplier;
       setXp((prev) => prev + xpGained);
       setStreak((prev) => prev + 1);
       setFeedback({
@@ -1945,16 +2161,34 @@ export default function App() {
         </button>
 
         {/* NEW: INVENTORY & CRATE BUTTON */}
+        {crates > 0 && (
+          <button
+            onClick={openCrate}
+            className="sidebar-btn-secondary"
+            style={{
+              marginTop: "10px",
+              background: "linear-gradient(90deg, #ff7b00, #e66e00)",
+              borderColor: "#ffba7a",
+              color: "#fff",
+              boxShadow: "0 0 15px rgba(255, 123, 0, 0.4)",
+              textShadow: "0 2px 4px rgba(0,0,0,0.3)",
+              transform: "scale(1.02)",
+            }}
+          >
+            📦 DECRYPT CRATE ({crates})
+          </button>
+        )}
+
         <button
           onClick={() => setShowInventory(true)}
           className="sidebar-btn-secondary"
           style={{
             marginTop: "10px",
-            borderColor: crates > 0 ? "#ff7b00" : "#334155",
-            color: crates > 0 ? "#ff7b00" : "#94a3b8",
+            borderColor: "#334155",
+            color: "#94a3b8",
           }}
         >
-          {crates > 0 ? `📦 OPEN CRATE (${crates})` : "🎒 INVENTORY"}
+          🎒 FORENSIC ARMORY
         </button>
       </aside>
 
@@ -2274,21 +2508,20 @@ export default function App() {
         </main>
       </div>
 
-      {/* ========================================================== */}
-      {/* FIXED MAGNIFIER (Positioned at the Root for full movement) */}
-      {/* ========================================================== */}
       {inspectorActive &&
         (() => {
           const skin = MAGNIFIER_SKINS[equippedSkin];
           const isFinding =
             hoveredIoC || foundIoCs.includes(hoveredIoC?.id || "");
+          const lensSize = skin.lensSize || 240; // Dynamic lens size
+          const offset = lensSize / 2;
 
           return (
             <motion.div
               className="magnifier"
               animate={{
-                x: mousePos.x - 120,
-                y: mousePos.y - 120,
+                x: mousePos.x - offset,
+                y: mousePos.y - offset,
                 borderColor:
                   skin.isAnimated && !isFinding
                     ? ["#0df0d4", "#ff00ff", "#fbbf24", "#0df0d4"]
@@ -2296,18 +2529,23 @@ export default function App() {
                     ? "#ff7b00"
                     : skin.color,
               }}
-              transition={
-                skin.isAnimated && !isFinding
-                  ? { duration: 2, repeat: Infinity }
-                  : { type: "tween", duration: 0 }
-              }
+              transition={{
+                x: { type: "tween", duration: 0 },
+                y: { type: "tween", duration: 0 },
+                borderColor:
+                  skin.isAnimated && !isFinding
+                    ? { duration: 2, repeat: Infinity }
+                    : { duration: 0 },
+              }}
               style={{
                 pointerEvents: "none",
-                position: "fixed", // Anchors to the whole browser window
+                position: "fixed",
                 top: 0,
                 left: 0,
-                zIndex: 9999, // Forces it on top of the sidebar and email
-                borderWidth: "6px",
+                zIndex: 9999,
+                width: lensSize,
+                height: lensSize,
+                borderWidth: skin.borderWidth || "6px",
                 borderStyle: "solid",
                 overflow: "visible",
                 boxShadow: isFinding
@@ -2316,27 +2554,27 @@ export default function App() {
                 backdropFilter: skin.filter,
               }}
             >
-              {/* THE HANDLE */}
+              {/* THE DYNAMIC HANDLE */}
               <motion.div
                 style={{
                   position: "absolute",
                   top: "82%",
                   left: "82%",
-                  width: "26px",
-                  height: "130px",
-                  borderRadius: "13px",
+                  width: skin.handleWidth || "26px",
+                  height: skin.handleHeight || "130px",
+                  borderRadius: skin.handleRadius || "13px",
                   transformOrigin: "top center",
                   transform: "rotate(-45deg)",
                   border: `3px solid ${isFinding ? "#ff7b00" : skin.color}`,
                   zIndex: -1,
                 }}
                 animate={{
-                  backgroundColor:
+                  background:
                     skin.isAnimated && !isFinding
                       ? ["#ffffff", "#0df0d4", "#ff00ff", "#ffffff"]
                       : isFinding
                       ? "#9a3412"
-                      : skin.handleColor,
+                      : skin.handleBackground || skin.handleColor,
                   boxShadow:
                     skin.isAnimated && !isFinding
                       ? [
@@ -2501,45 +2739,7 @@ export default function App() {
                         </svg>
                       ),
                     };
-                  case "BRONZE":
-                    return {
-                      color: "#b45309",
-                      glow: "rgba(180, 83, 9, 0.6)",
-                      anim: { scale: [0, 1], rotate: [-90, 0] },
-                      badge: (
-                        <svg
-                          viewBox="0 0 100 100"
-                          style={{
-                            width: "140px",
-                            height: "140px",
-                            filter:
-                              "drop-shadow(0 0 20px rgba(180, 83, 9, 0.6))",
-                          }}
-                        >
-                          <path
-                            d="M50 5 L95 20 L90 70 L50 95 L10 70 L5 20 Z"
-                            fill="#451a03"
-                            stroke="#b45309"
-                            strokeWidth="6"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M50 15 L85 28 L80 65 L50 85 L20 65 L15 28 Z"
-                            fill="#78350f"
-                            stroke="#f59e0b"
-                            strokeWidth="2"
-                          />
-                          <polygon
-                            points="50,25 70,45 50,75 30,45"
-                            fill="#b45309"
-                          />
-                          <polygon
-                            points="50,35 60,45 50,60 40,45"
-                            fill="#fef3c7"
-                          />
-                        </svg>
-                      ),
-                    };
+
                   case "GOLD":
                     return {
                       color: "#fbbf24",
@@ -2616,6 +2816,51 @@ export default function App() {
                           <polygon
                             points="50,30 55,42 50,55 45,42"
                             fill="#ffffff"
+                          />
+                        </svg>
+                      ),
+                    };
+                  case "RUBY":
+                    return {
+                      color: "#e11d48",
+                      glow: "rgba(225, 29, 72, 0.8)",
+                      anim: { scale: [0, 1], rotate: [90, 0] },
+                      badge: (
+                        <svg
+                          viewBox="0 0 100 100"
+                          style={{
+                            width: "200px",
+                            height: "200px",
+                            filter:
+                              "drop-shadow(0 0 35px rgba(225, 29, 72, 0.8))",
+                          }}
+                        >
+                          <polygon
+                            points="50,5 95,25 95,75 50,95 5,75 5,25"
+                            fill="#4c0519"
+                            stroke="#e11d48"
+                            strokeWidth="6"
+                            strokeLinejoin="round"
+                          />
+                          <polygon
+                            points="50,15 85,32 50,50 15,32"
+                            fill="#fb7185"
+                          />
+                          <polygon
+                            points="85,32 85,68 50,85 50,50"
+                            fill="#9f1239"
+                          />
+                          <polygon
+                            points="15,32 50,50 50,85 15,68"
+                            fill="#e11d48"
+                          />
+                          <polygon
+                            points="50,25 70,40 50,70 30,40"
+                            fill="#f43f5e"
+                          />
+                          <polygon
+                            points="50,30 55,40 50,55 45,40"
+                            fill="#fff1f2"
                           />
                         </svg>
                       ),
@@ -2924,7 +3169,6 @@ export default function App() {
         )}
       </AnimatePresence>
 
-      {/* NEW: INVENTORY MODAL */}
       <AnimatePresence>
         {showInventory && !showUnboxing && (
           <motion.div
@@ -2951,38 +3195,6 @@ export default function App() {
                 Forensic Armory
               </h2>
 
-              {crates > 0 && (
-                <div
-                  style={{
-                    textAlign: "center",
-                    marginBottom: "30px",
-                    padding: "20px",
-                    background: "rgba(255,123,0,0.1)",
-                    borderRadius: "8px",
-                    border: "1px dashed #ff7b00",
-                  }}
-                >
-                  <h3 style={{ color: "#ff7b00", margin: "0 0 10px 0" }}>
-                    You have {crates} Encrypted Crate{crates > 1 ? "s" : ""}
-                  </h3>
-                  <button
-                    onClick={openCrate}
-                    style={{
-                      background: "#ff7b00",
-                      color: "#fff",
-                      padding: "10px 20px",
-                      border: "none",
-                      borderRadius: "4px",
-                      fontWeight: 900,
-                      cursor: "pointer",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    Decrypt Crate
-                  </button>
-                </div>
-              )}
-
               <div
                 style={{
                   display: "grid",
@@ -2990,77 +3202,93 @@ export default function App() {
                   gap: "15px",
                   maxHeight: "400px",
                   overflowY: "auto",
+                  paddingRight: "5px",
                 }}
               >
-                {Object.values(MAGNIFIER_SKINS).map((skin) => {
-                  const isOwned = inventory.includes(skin.id);
-                  const isEquipped = equippedSkin === skin.id;
+                {Object.values(MAGNIFIER_SKINS)
+                  .sort((a, b) => {
+                    // Sorting logic: Common -> Rare -> Epic -> Legendary
+                    const rarityOrder: Record<string, number> = {
+                      Common: 1,
+                      Rare: 2,
+                      Epic: 3,
+                      Legendary: 4,
+                    };
+                    return rarityOrder[a.rarity] - rarityOrder[b.rarity];
+                  })
+                  .map((skin) => {
+                    const isOwned = inventory.includes(skin.id);
+                    const isEquipped = equippedSkin === skin.id;
 
-                  return (
-                    <div
-                      key={skin.id}
-                      style={{
-                        padding: "15px",
-                        background: "#0f172a",
-                        border: `2px solid ${isOwned ? skin.color : "#334155"}`,
-                        borderRadius: "8px",
-                        opacity: isOwned ? 1 : 0.5,
-                      }}
-                    >
+                    return (
                       <div
+                        key={skin.id}
                         style={{
-                          color: getRarityColor(skin.rarity),
-                          fontSize: "10px",
-                          fontWeight: 900,
-                          textTransform: "uppercase",
+                          padding: "15px",
+                          background: "#0f172a",
+                          border: `2px solid ${
+                            isOwned ? skin.color : "#334155"
+                          }`,
+                          borderRadius: "8px",
+                          opacity: isOwned ? 1 : 0.5,
                         }}
                       >
-                        {skin.rarity}
-                      </div>
-                      <div
-                        style={{
-                          color: "#fff",
-                          fontWeight: 700,
-                          margin: "5px 0",
-                        }}
-                      >
-                        {skin.name}
-                      </div>
-                      {isOwned ? (
-                        <button
-                          onClick={() => setEquippedSkin(skin.id)}
-                          style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginTop: "10px",
-                            background: isEquipped ? skin.color : "transparent",
-                            color: isEquipped ? "#000" : skin.color,
-                            border: `1px solid ${skin.color}`,
-                            borderRadius: "4px",
-                            cursor: "pointer",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          {isEquipped ? "EQUIPPED" : "EQUIP"}
-                        </button>
-                      ) : (
                         <div
                           style={{
-                            width: "100%",
-                            padding: "8px",
-                            marginTop: "10px",
-                            textAlign: "center",
-                            color: "#64748b",
-                            fontSize: "12px",
-                            fontWeight: "bold",
+                            color: getRarityColor(skin.rarity),
+                            fontSize: "10px",
+                            fontWeight: 900,
+                            textTransform: "uppercase",
                           }}
                         >
-                          LOCKED
+                          {skin.rarity}
                         </div>
-                      )}
-                    </div>
-                  );
-                })}
+                        <div
+                          style={{
+                            color: "#fff",
+                            fontWeight: 700,
+                            margin: "5px 0",
+                          }}
+                        >
+                          {skin.name}
+                        </div>
+                        {isOwned ? (
+                          <button
+                            onClick={() => setEquippedSkin(skin.id)}
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "10px",
+                              background: isEquipped
+                                ? skin.color
+                                : "transparent",
+                              color: isEquipped ? "#000" : skin.color,
+                              border: `1px solid ${skin.color}`,
+                              borderRadius: "4px",
+                              cursor: "pointer",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            {isEquipped ? "EQUIPPED" : "EQUIP"}
+                          </button>
+                        ) : (
+                          <div
+                            style={{
+                              width: "100%",
+                              padding: "8px",
+                              marginTop: "10px",
+                              textAlign: "center",
+                              color: "#64748b",
+                              fontSize: "12px",
+                              fontWeight: "bold",
+                            }}
+                          >
+                            LOCKED
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
               </div>
             </div>
           </motion.div>
@@ -3120,10 +3348,10 @@ export default function App() {
 
                 {/* Spinning Track */}
                 <motion.div
+                  key={spinKey}
                   initial={{ x: 0 }}
-                  // Moves the track far left, stopping exactly on the 45th item
                   animate={{ x: -(45 * 160 - 300) }}
-                  transition={{ duration: 5, ease: [0.15, 0.85, 0.2, 1] }} // Spin physics
+                  transition={{ duration: 5, ease: [0.15, 0.85, 0.2, 1] }}
                   style={{
                     display: "flex",
                     height: "100%",
@@ -3171,7 +3399,7 @@ export default function App() {
               {/* Reveal Winner */}
               <div
                 style={{
-                  height: "100px",
+                  height: "120px", // slightly taller to fit the XP text
                   marginTop: "30px",
                   display: "flex",
                   justifyContent: "center",
@@ -3184,25 +3412,64 @@ export default function App() {
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ type: "spring", bounce: 0.5 }}
                   >
-                    <h3
-                      style={{
-                        color: getRarityColor(wonSkin.rarity),
-                        margin: "0 0 10px 0",
-                        textTransform: "uppercase",
-                        letterSpacing: "2px",
-                      }}
-                    >
-                      {wonSkin.rarity} UNLOCKED
-                    </h3>
-                    <h1
-                      style={{
-                        color: wonSkin.color,
-                        margin: 0,
-                        textShadow: `0 0 20px ${wonSkin.color}`,
-                      }}
-                    >
-                      {wonSkin.name}
-                    </h1>
+                    {isDuplicate ? (
+                      // DUPLICATE UI
+                      <>
+                        <h3
+                          style={{
+                            color: "#eab308",
+                            margin: "0 0 5px 0",
+                            textTransform: "uppercase",
+                            letterSpacing: "2px",
+                          }}
+                        >
+                          DUPLICATE CONVERTED
+                        </h3>
+                        <h2
+                          style={{
+                            color: "#fff",
+                            margin: 0,
+                            opacity: 0.8,
+                          }}
+                        >
+                          {wonSkin.name}
+                        </h2>
+                        <div
+                          style={{
+                            color: "#10b981",
+                            fontWeight: 900,
+                            fontSize: "1.2rem",
+                            marginTop: "8px",
+                            textShadow: "0 0 10px rgba(16, 185, 129, 0.4)",
+                          }}
+                        >
+                          +{duplicateXpReward} XP DATA BOUNTY
+                        </div>
+                      </>
+                    ) : (
+                      // NEW UNLOCK UI
+                      <>
+                        <h3
+                          style={{
+                            color: getRarityColor(wonSkin.rarity),
+                            margin: "0 0 10px 0",
+                            textTransform: "uppercase",
+                            letterSpacing: "2px",
+                          }}
+                        >
+                          {wonSkin.rarity} UNLOCKED
+                        </h3>
+                        <h1
+                          style={{
+                            color: wonSkin.color,
+                            margin: 0,
+                            textShadow: `0 0 20px ${wonSkin.color}`,
+                          }}
+                        >
+                          {wonSkin.name}
+                        </h1>
+                      </>
+                    )}
                     <button
                       onClick={() => {
                         setShowUnboxing(false);
@@ -3223,7 +3490,7 @@ export default function App() {
                   </motion.div>
                 ) : (
                   <div style={{ color: "#64748b", fontWeight: 800 }}>
-                    Analyzing cryptographic hashes...
+                    Spinning...
                   </div>
                 )}
               </div>
