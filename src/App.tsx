@@ -13,6 +13,7 @@ import {
   Lock,
   MailOpen,
   Fingerprint,
+  HelpCircle,
 } from "lucide-react";
 import DOMPurify from "dompurify";
 import "./styles.css";
@@ -1455,6 +1456,7 @@ export default function App() {
   const [inspectorActive, setInspectorActive] = useState(false);
   const [showRankUp, setShowRankUp] = useState(false);
   const [showLeaderboard, setShowLeaderboard] = useState(false);
+  const [showInstructions, setShowInstructions] = useState(false);
   const [feedback, setFeedback] = useState<any>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
@@ -1803,7 +1805,7 @@ export default function App() {
     }
 
     // 2. 500 XP MILESTONE CHECK
-    const currentThreshold = Math.floor(xp / 500);
+    const currentThreshold = Math.floor(xp / 50);
     if (currentThreshold > lastXpThreshold) {
       const cratesEarned = currentThreshold - lastXpThreshold;
       setCrates((prev) => prev + cratesEarned);
@@ -2123,7 +2125,10 @@ export default function App() {
           </span>
         </div>
 
-        <div className="rank-section">
+        <div
+          className="rank-section"
+          style={{ flex: "none", paddingBottom: "10px" }}
+        >
           <div className="rank-label">Investigator ID</div>
           <input
             type="text"
@@ -2267,45 +2272,79 @@ export default function App() {
           </div>
         </div>
 
-        <button
-          onClick={() => setShowLeaderboard(true)}
-          className="sidebar-btn-secondary"
-        >
-          <Trophy size={16} /> Global Leaderboard
-        </button>
-
-        {/* NEW: INVENTORY & CRATE BUTTON */}
-        {crates > 0 && (
-          <button
-            onClick={openCrate}
-            className="sidebar-btn-secondary"
-            style={{
-              marginTop: "10px",
-              background: "linear-gradient(90deg, #ff7b00, #e66e00)",
-              borderColor: "#ffba7a",
-              color: "#fff",
-              boxShadow: "0 0 15px rgba(255, 123, 0, 0.4)",
-              textShadow: "0 2px 4px rgba(0,0,0,0.3)",
-              transform: "scale(1.02)",
-            }}
-          >
-            📦 DECRYPT CRATE ({crates})
-          </button>
-        )}
-
-        <button
-          onClick={() => setShowInventory(true)}
-          className="sidebar-btn-secondary"
+        {/* --- REORDERED & THEMED ACTION BUTTONS --- */}
+        <div
           style={{
+            display: "flex",
+            flexDirection: "column",
+            gap: "12px",
             marginTop: "10px",
-            borderColor: "#334155",
-            color: "#94a3b8",
           }}
         >
-          Inventory
-        </button>
-      </aside>
+          {/* 1. CRATE BUTTON (Appears at the top if crates > 0) */}
+          {crates > 0 && (
+            <button
+              onClick={openCrate}
+              className="sidebar-btn-secondary"
+              style={{
+                margin: 0,
+                background: "linear-gradient(90deg, #ff7b00, #e66e00)",
+                borderColor: "#ffba7a",
+                color: "#fff",
+                boxShadow: "0 0 15px rgba(255, 123, 0, 0.4)",
+                textShadow: "0 2px 4px rgba(0,0,0,0.3)",
+                transform: "scale(1.02)",
+              }}
+            >
+              📦 DECRYPT CRATE ({crates})
+            </button>
+          )}
 
+          {/* 2. INVENTORY BUTTON (Netskope Cyan Theme) */}
+          <button
+            onClick={() => setShowInventory(true)}
+            className="sidebar-btn-secondary"
+            style={{
+              margin: 0,
+              background: "rgba(0, 169, 224, 0.1)", // Light cyan tint
+              borderColor: "#00a9e0", // Netskope Cyan
+              color: "#00a9e0",
+              boxShadow: "0 0 10px rgba(0, 169, 224, 0.15)",
+              textShadow: "0 0 8px rgba(0, 169, 224, 0.4)",
+            }}
+          >
+            <ShieldAlert size={16} /> INVENTORY
+          </button>
+
+          {/* 3. GLOBAL LEADERBOARD BUTTON (Netskope Dark Slate Theme) */}
+          <button
+            onClick={() => setShowLeaderboard(true)}
+            className="sidebar-btn-secondary"
+            style={{
+              margin: 0,
+              background: "#0f172a", // Darker slate to contrast with sidebar
+              borderColor: "#334155",
+              color: "#cbd5e1",
+            }}
+          >
+            <Trophy size={16} /> Global Leaderboard
+          </button>
+
+          {/* 4. INSTRUCTIONS BUTTON (Neutral Help Theme) */}
+          <button
+            onClick={() => setShowInstructions(true)}
+            className="sidebar-btn-secondary"
+            style={{
+              margin: 0,
+              background: "transparent",
+              borderColor: "#334155",
+              color: "#94a3b8",
+            }}
+          >
+            <HelpCircle size={16} /> How to Play
+          </button>
+        </div>
+      </aside>
       {/* 2 & 3. MAIN VIEW (INBOX + READING PANE) */}
 
       {/* FORCE CURSOR HIDING & INVISIBLE HITBOX EXPANSION WHEN INSPECTOR IS ON */}
@@ -3404,7 +3443,7 @@ export default function App() {
                 className="leaderboard-title"
                 style={{ textAlign: "center", marginBottom: "20px" }}
               >
-                Forensic Armory
+                INVENTORY
               </h2>
 
               <div
@@ -3734,6 +3773,224 @@ export default function App() {
                 )}
               </div>
             </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* INSTRUCTIONS / HOW TO PLAY MODAL */}
+      <AnimatePresence>
+        {showInstructions && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="leaderboard-overlay"
+            onClick={() => setShowInstructions(false)}
+          >
+            <motion.div
+              className="leaderboard-modal"
+              onClick={(e) => e.stopPropagation()}
+              style={{ maxWidth: "600px" }}
+            >
+              <button
+                className="close-btn"
+                onClick={() => setShowInstructions(false)}
+              >
+                <X size={24} />
+              </button>
+              <h2
+                className="leaderboard-title"
+                style={{
+                  textAlign: "center",
+                  marginBottom: "10px",
+                  fontSize: "1.8rem",
+                }}
+              >
+                Field Manual
+              </h2>
+              <p
+                style={{
+                  textAlign: "center",
+                  color: "#94a3b8",
+                  marginBottom: "30px",
+                  fontSize: "14px",
+                  fontWeight: 700,
+                }}
+              >
+                Follow these protocols to investigate threats and rank up.
+              </p>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "15px",
+                }}
+              >
+                {/* Step 1 */}
+                <div
+                  style={{
+                    background: "#0f172a",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    borderLeft: "4px solid #00a9e0",
+                  }}
+                >
+                  <h3
+                    style={{
+                      color: "#fff",
+                      margin: "0 0 10px 0",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    <Search size={18} color="#00a9e0" /> 1. Enable the Inspector
+                  </h3>
+                  <p
+                    style={{
+                      color: "#cbd5e1",
+                      margin: 0,
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    Click <strong>ENABLE INSPECTOR</strong> to activate your
+                    forensic magnifier. Move it over the email to reveal hidden
+                    routing data, true URLs, and behavioral traps.
+                  </p>
+                </div>
+
+                {/* Step 2 */}
+                <div
+                  style={{
+                    background: "#0f172a",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    borderLeft: "4px solid #f59e0b",
+                  }}
+                >
+                  <h3
+                    style={{
+                      color: "#fff",
+                      margin: "0 0 10px 0",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    <Fingerprint size={18} color="#f59e0b" /> 2. Log the
+                    Evidence
+                  </h3>
+                  <p
+                    style={{
+                      color: "#cbd5e1",
+                      margin: 0,
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    When the magnifier detects a threat or a trust indicator,{" "}
+                    <strong>click on it</strong> to log it into your Evidence
+                    Tracker. You must find ALL evidence before making a
+                    decision.
+                  </p>
+                </div>
+
+                {/* Step 3 */}
+                <div
+                  style={{
+                    background: "#0f172a",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    borderLeft: "4px solid #10b981",
+                  }}
+                >
+                  <h3
+                    style={{
+                      color: "#fff",
+                      margin: "0 0 10px 0",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    <ShieldAlert size={18} color="#10b981" /> 3. Make the Call
+                  </h3>
+                  <p
+                    style={{
+                      color: "#cbd5e1",
+                      margin: 0,
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    Once the evidence is collected, decide if the email is a{" "}
+                    <strong>Threat (Phish)</strong> or a <strong>Safe</strong>{" "}
+                    workflow. Correct decisions build your streak and XP.
+                  </p>
+                </div>
+
+                {/* Step 4 */}
+                <div
+                  style={{
+                    background: "#0f172a",
+                    padding: "20px",
+                    borderRadius: "8px",
+                    borderLeft: "4px solid #a855f7",
+                  }}
+                >
+                  <h3
+                    style={{
+                      color: "#fff",
+                      margin: "0 0 10px 0",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "10px",
+                      fontSize: "16px",
+                    }}
+                  >
+                    <Trophy size={18} color="#a855f7" /> 4. Ascend the Ranks
+                  </h3>
+                  <p
+                    style={{
+                      color: "#cbd5e1",
+                      margin: 0,
+                      fontSize: "13px",
+                      lineHeight: "1.5",
+                    }}
+                  >
+                    Earn XP to unlock harder simulation tiers. Every time you
+                    rank up, or hit XP milestones, you earn{" "}
+                    <strong>Decrypt Crates</strong> containing rare magnifier
+                    skins!
+                  </p>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowInstructions(false)}
+                style={{
+                  width: "100%",
+                  padding: "15px",
+                  marginTop: "30px",
+                  background: "#00a9e0",
+                  color: "#fff",
+                  border: "none",
+                  borderRadius: "8px",
+                  fontWeight: 900,
+                  fontSize: "1rem",
+                  cursor: "pointer",
+                  textTransform: "uppercase",
+                  boxShadow: "0 0 15px rgba(0, 169, 224, 0.4)",
+                }}
+              >
+                Acknowledge & Begin
+              </button>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
