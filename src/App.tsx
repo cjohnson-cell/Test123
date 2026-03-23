@@ -583,40 +583,197 @@ const EMAIL_DATABASE = [
     lesson:
       "Automated platform emails from verified root domains with standard retention warnings are generally safe.",
   },
+  // --- NEW TIER 1: BEGINNER BATCH ---
+
   {
-    id: 10,
-    app: "Netskope Store",
+    id: 301,
+    app: "Staffbase",
     tier: 1,
-    isPhish: false,
-    sender: "orders@netskope.com",
-    subject: "Your Order #4992 has Shipped",
+    isPhish: true,
+    sender: "hr@staffbase-employee-portal.com",
+    subject: "MANDATORY: Updated 2026 Employee Handbook",
     body: `
-      <div style="font-family: -apple-system, sans-serif; max-width: 600px; border: 1px solid #e5e5e5;">
-        <div style="background-color: #FF8F1C; padding: 20px;"><strong style="color: #ffffff; font-size: 22px;">Netskope Store</strong></div>
+      <div style="font-family: Arial, sans-serif; max-width: 600px; border: 1px solid #e5e5e5;">
+        <div style="background-color: #0028FF; padding: 20px;"><strong style="color: #ffffff; font-size: 22px;">Staffbase</strong></div>
         <div style="padding: 20px; background-color: #ffffff;">
-          <p style="color: #333333; font-size: 15px;">
-            <span data-ioc-id="ioc-context" data-ioc-text="Standard Notification: Routine e-commerce shipment updates are expected.">Great news! Your recent company swag order has been shipped via FedEx.</span>
+          <h2 style="font-size: 18px; color: #333333;">Action Required: Signature Needed</h2>
+          <p style="color: #555555; font-size: 14px;">
+            <span data-ioc-id="ioc-greeting" data-ioc-text="Generic Greeting: Authentic HR platforms usually populate your actual first and last name.">Dear Employee,</span>
           </p>
-          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Secure Link: Routes directly to the official FedEx tracking portal." style="display: inline-block; background-color: #FF8F1C; color: #ffffff; padding: 12px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">Track Package</a>
+          <p style="color: #555555; font-size: 14px;">
+            <span data-ioc-id="ioc-urgency" data-ioc-text="Absurd Threat: HR does not suspend payroll for reading a handbook a few hours late.">Please review and sign the updated Employee Conduct Policy. Failure to sign within 4 hours will result in immediate payroll suspension.</span>
+          </p>
+          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Malicious Payload: Connects to a credential harvesting site rather than your internal intranet." style="display: inline-block; background-color: #0028FF; color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 4px;">Sign Document Now</a>
         </div>
       </div>
     `,
     iocs: [
       {
         id: "ioc-sender",
-        text: "Verified Domain: netskope.com is the official corporate domain.",
+        text: "Spoofed Domain: Uses a hyphenated, fake '.com' instead of the official staffbase.com.",
       },
       {
-        id: "ioc-context",
-        text: "Standard Notification: Routine e-commerce shipment updates are expected.",
+        id: "ioc-greeting",
+        text: "Generic Greeting: Authentic HR platforms usually populate your actual first and last name.",
+      },
+      {
+        id: "ioc-urgency",
+        text: "Absurd Threat: HR does not suspend payroll for reading a handbook a few hours late.",
       },
       {
         id: "ioc-link",
-        text: "Secure Link: Routes directly to the official FedEx tracking portal.",
+        text: "Malicious Payload: Connects to a credential harvesting site rather than your internal intranet.",
       },
     ],
     lesson:
-      "Shipping notifications from verified corporate domains are typical, safe operations.",
+      "Beginner threats rely on raw panic and generic greetings. HR will never threaten your payroll over a routine handbook update.",
+  },
+
+  {
+    id: 302,
+    app: "Asana",
+    tier: 1,
+    isPhish: false,
+    sender: "no-reply@asana.com",
+    subject: "Task Completed: Q1 Marketing Launch",
+    body: `
+      <div style="font-family: -apple-system, sans-serif; max-width: 600px; border: 1px solid #ECEAE5; border-radius: 8px;">
+        <div style="padding: 30px; text-align: center; border-bottom: 1px solid #ECEAE5;"><h2 style="color: #273347; margin: 0; font-size: 28px;">asana</h2></div>
+        <div style="padding: 30px; background-color: #ffffff;">
+          <p style="font-size: 16px; color: #1E1F21;">
+             <span data-ioc-id="ioc-context" data-ioc-text="Routine Workflow: Automated task completion emails are a standard feature of project management tools."><strong>Sarah Jenkins</strong> marked the task <strong>"Finalize Ad Copy"</strong> as complete in the Q1 Marketing Launch project.</span>
+          </p>
+          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Secure Link: Safely routes directly to your authenticated Asana workspace." style="display: inline-block; background-color: #F06A6A; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;">View in Asana</a>
+        </div>
+      </div>
+    `,
+    iocs: [
+      {
+        id: "ioc-sender",
+        text: "Verified Domain: asana.com is the authorized corporate domain.",
+      },
+      {
+        id: "ioc-context",
+        text: "Routine Workflow: Automated task completion emails are a standard feature of project management tools.",
+      },
+      {
+        id: "ioc-link",
+        text: "Secure Link: Safely routes directly to your authenticated Asana workspace.",
+      },
+    ],
+    lesson:
+      "Routine project management notifications from exact root domains without aggressive urgency are safe.",
+  },
+
+  {
+    id: 303,
+    app: "Knak",
+    tier: 1,
+    isPhish: true,
+    sender: "alerts@knak-builder-app.io",
+    subject: "WARNING: Account Suspension Pending",
+    body: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; border: 1px solid #e5e5e5;">
+        <div style="background-color: #FF4A5A; padding: 20px;"><strong style="color: #ffffff; font-size: 22px;">Knak</strong></div>
+        <div style="padding: 20px; background-color: #ffffff;">
+          <h2 style="font-size: 18px; color: #333333;">Subscription Error</h2>
+          <p style="color: #555555; font-size: 14px;">
+            <span data-ioc-id="ioc-urgency" data-ioc-text="Destructive Threat: B2B SaaS platforms do not permanently delete your assets with a 1-hour notice.">We were unable to process the renewal for your Knak enterprise seat. All unsaved email campaigns will be permanently deleted in 1 hour.</span>
+          </p>
+          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Malicious Link: Points to a fake portal designed to steal your marketing credentials." style="display: inline-block; background-color: #FF4A5A; color: #ffffff; padding: 12px 20px; text-decoration: none; font-weight: bold; border-radius: 4px;">Update Billing Info</a>
+        </div>
+      </div>
+    `,
+    iocs: [
+      {
+        id: "ioc-sender",
+        text: "Spoofed Domain: knak-builder-app.io is fake. Official communications use knak.com.",
+      },
+      {
+        id: "ioc-urgency",
+        text: "Destructive Threat: B2B SaaS platforms do not permanently delete your assets with a 1-hour notice.",
+      },
+      {
+        id: "ioc-link",
+        text: "Malicious Link: Points to a fake portal designed to steal your marketing credentials.",
+      },
+    ],
+    lesson:
+      "Legitimate enterprise software will never threaten to delete your hard work with a 1-hour notice to force a login.",
+  },
+
+  {
+    id: 304,
+    app: "Common Room",
+    tier: 1,
+    isPhish: false,
+    sender: "digest@commonroom.io",
+    subject: "Your Weekly Community Insights",
+    body: `
+      <div style="font-family: -apple-system, sans-serif; max-width: 600px; border: 1px solid #e5e5e5; border-radius: 6px;">
+        <div style="background-color: #5C27E5; padding: 20px; text-align: center;"><strong style="color: #ffffff; font-size: 22px;">Common Room</strong></div>
+        <div style="padding: 25px; background-color: #ffffff;">
+          <h2 style="font-size: 18px; color: #333333; margin-top: 0;">Weekly Digest</h2>
+          <p style="color: #555555; font-size: 14px;">
+            <span data-ioc-id="ioc-context" data-ioc-text="Informational Content: Automated weekly digests are non-urgent, standard reports.">Here is your summary of community activity for the past 7 days. You have 12 new active members across your connected Slack and Discord channels.</span>
+          </p>
+          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Secure Link: Safely routes directly to your authenticated Common Room dashboard." style="display: inline-block; background-color: #5C27E5; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 4px; font-weight: bold;">View Full Report</a>
+        </div>
+      </div>
+    `,
+    iocs: [
+      {
+        id: "ioc-sender",
+        text: "Verified Domain: commonroom.io is the official corporate domain.",
+      },
+      {
+        id: "ioc-context",
+        text: "Informational Content: Automated weekly digests are non-urgent, standard reports.",
+      },
+      {
+        id: "ioc-link",
+        text: "Secure Link: Safely routes directly to your authenticated Common Room dashboard.",
+      },
+    ],
+    lesson:
+      "Automated weekly digests from authorized root domains are standard, safe communications.",
+  },
+
+  {
+    id: 305,
+    app: "Lyra",
+    tier: 1,
+    isPhish: true,
+    sender: "benefits@lyrahealth-update.net",
+    subject: "URGENT: Your Mental Health Benefits are Expiring",
+    body: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; border: 1px solid #e5e5e5; border-radius: 8px;">
+        <div style="padding: 20px; border-bottom: 1px solid #e5e5e5;"><strong style="color: #007D8A; font-size: 24px;">Lyra Health</strong></div>
+        <div style="padding: 20px; background-color: #ffffff;">
+          <h2 style="font-size: 18px; color: #333333; margin-top: 0;">Coverage Status Notice</h2>
+          <p style="color: #555555; font-size: 14px;">
+             <span data-ioc-id="ioc-manipulation" data-ioc-text="Emotional Exploitation: Attackers weaponize highly sensitive topics like healthcare access to force an immediate reaction.">Your corporate sponsored mental health coverage requires a mandatory profile recertification. If you do not verify your identity, your therapy sessions will be canceled.</span>
+          </p>
+          <a href="#" data-ioc-id="ioc-link" data-ioc-text="Malicious Redirect: Routes to a fake portal designed to harvest both corporate credentials and personal data." style="display: inline-block; background-color: #007D8A; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold;">Verify Identity</a>
+        </div>
+      </div>
+    `,
+    iocs: [
+      {
+        id: "ioc-sender",
+        text: "Spoofed Domain: lyrahealth-update.net is fake. Official communications use lyrahealth.com.",
+      },
+      {
+        id: "ioc-manipulation",
+        text: "Emotional Exploitation: Attackers weaponize highly sensitive topics like healthcare access to force an immediate reaction.",
+      },
+      {
+        id: "ioc-link",
+        text: "Malicious Redirect: Routes to a fake portal designed to harvest both corporate credentials and personal data.",
+      },
+    ],
+    lesson:
+      "Attackers aggressively target HR and healthcare benefits to trigger panic. Always verify the sender domain on benefit emails.",
   },
   {
     id: 11,
@@ -1441,7 +1598,7 @@ const getRarityColor = (rarity: string) => {
 };
 
 const BASE_LEADERBOARD = [
-  { id: "npc1", name: "SecOps_Ninja", xp: 3000, acc: "98%" },
+  { id: "npc1", name: "SecOps_Ninja", xp: 4000, acc: "98%" },
   { id: "npc2", name: "Alex_IT", xp: 2500, acc: "95%" },
   { id: "npc3", name: "Sarah.Dev", xp: 1600, acc: "97%" },
   { id: "npc4", name: "Michael.HR", xp: 1000, acc: "75%" },
@@ -1488,11 +1645,11 @@ export default function App() {
   const [seenEmailIds, setSeenEmailIds] = useState<number[]>([initialEmail.id]);
   const RANK_THRESHOLDS = {
     IRON: 0,
-    COPPER: 400,
-    GOLD: 900,
-    TITANIUM: 1500,
-    RUBY: 2200,
-    APEX: 4000,
+    COPPER: 1000,
+    GOLD: 2500,
+    TITANIUM: 4500,
+    RUBY: 7000,
+    APEX: 10000,
   };
   const multiplier = streak >= 5 ? 3 : streak >= 3 ? 2 : 1;
 
@@ -1805,7 +1962,7 @@ export default function App() {
     }
 
     // 2. 500 XP MILESTONE CHECK
-    const currentThreshold = Math.floor(xp / 50);
+    const currentThreshold = Math.floor(xp / 500);
     if (currentThreshold > lastXpThreshold) {
       const cratesEarned = currentThreshold - lastXpThreshold;
       setCrates((prev) => prev + cratesEarned);
@@ -1829,9 +1986,9 @@ export default function App() {
       case "Epic":
         return 500;
       case "Legendary":
-        return 1500;
+        return 1000;
       case "Mythical":
-        return 5000;
+        return 2500;
       default:
         return 50;
     }
@@ -3965,8 +4122,7 @@ export default function App() {
                   >
                     Earn XP to unlock harder simulation tiers. Every time you
                     rank up, or hit XP milestones, you earn{" "}
-                    <strong>Decrypt Crates</strong> containing rare magnifier
-                    skins!
+                    <strong>Crates</strong> containing rare magnifier skins!
                   </p>
                 </div>
               </div>
