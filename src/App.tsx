@@ -1941,7 +1941,7 @@ export default function App() {
   const [spinKey, setSpinKey] = useState(0); // Forces roulette animation to reset
 
   // --- ECONOMY & ACHIEVEMENTS STATE ---
-  const [skopeCoins, setSkopeCoins] = useState(9999999);
+  const [skopeCoins, setSkopeCoins] = useState(0);
   const [showAchievements, setShowAchievements] = useState(false);
   const [unlockedAchievements, setUnlockedAchievements] = useState<string[]>(
     []
