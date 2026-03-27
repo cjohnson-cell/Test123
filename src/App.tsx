@@ -1622,14 +1622,15 @@ const BACKGROUNDS_DB: Record<string, any> = {
     id: "BEACH",
     name: "Beach Oasis",
     rarity: "Rare",
-    price: 2000,
+    price: 1500,
     cssClass: "theme-beach",
   },
+
   HACKER: {
     id: "HACKER",
     name: "Terminal Grid",
     rarity: "Epic",
-    price: 3000,
+    price: 2500,
     cssClass: "theme-hacker",
   },
   CYBERPUNK: {
@@ -1897,10 +1898,10 @@ const ACHIEVEMENTS_DB = [
     type: "rank",
     target: 10000,
   },
-  
+  // Classified Easter Egg
   {
-    id: "ach_sec_X",
-    title: "The X Protocol",
+    id: "ach_sec_netskope",
+    title: "Netskope Protocol",
     desc: "Acknowledge the Architect: Maintain 98% accuracy across 100 investigations.",
     reward: 20000,
     type: "secret",
@@ -2436,7 +2437,7 @@ export default function App() {
       const newCorrect = correctDecisions + 1;
       setCorrectDecisions(newCorrect);
 
-      // Calculate live accuracy right now for the Benevac Protocol
+      // Calculate live accuracy right now for Netskope Protocol
       const currentAccuracy = (newCorrect / newTotalDecisions) * 100;
 
       const xpGained = 100 * multiplier;
@@ -2466,8 +2467,8 @@ export default function App() {
             achieved = true;
           if (ach.type === "rank" && newXp >= ach.target) achieved = true;
 
-          // SECRET: The Benevac Protocol
-          if (ach.type === "secret" && ach.id === "ach_sec_benevac") {
+          // SECRET: The Netskope Protocol
+          if (ach.type === "secret" && ach.id === "ach_sec_Netskope") {
             if (newTotalDecisions >= 100 && currentAccuracy >= 98)
               achieved = true;
           }
